@@ -21,7 +21,7 @@ export default {
     },
     createMovie: function () {
       axios.post("http://localhost:3000/movies", this.newMovies).then((response) => {
-        console.log("sanity", response);
+        console.log("sanity", response.data);
         this.movies.push(response.data);
         this.newMovies = {};
       });
@@ -32,17 +32,23 @@ export default {
       document.querySelector("#movie-details").showModal();
     },
     updateMovie: function (movie) {
-      axios.patch(`http://localhost:3000/movies/${movie.id}`, this.editMovie).then((response) => {
-        console.log(response);
-        this.movieInfo;
-      });
+      axios
+        .patch(`/movies/${movie.id}`, movie)
+        .then((response) => {
+          console.log("Success!", response.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data.errors);
+        });
     },
     destroyMovie: function (movie) {
-      axios.delete(`localhost:3000/movies/${movie.id}`).then((response) => {
-        console.log("RIP", response);
-        var index = this.movies.indexOf(movie);
-        this.movies.splice(index, 1);
-      });
+      if (confirm("Deletey!?!??")) {
+        axios.delete(`/movies/${movie.id}`).then((response) => {
+          console.log("Success", response.data);
+          var index = this.movies.indexOf(movie);
+          this.movies.splice(index, 1);
+        });
+      }
     },
   },
 };
