@@ -4,7 +4,7 @@ export default {
   data: function () {
     return {
       message: "Add some movies!",
-      newMovieParams: {},
+      newMovieParams: { plot: "" },
       errors: [],
     };
   },
@@ -38,6 +38,9 @@ export default {
     <input type="text" v-model="newMovieParams.year" />
     plot:
     <input type="text" v-model="newMovieParams.plot" />
+    <small class="danger" v-if="newMovieParams.plot.length < 30 && newMovieParams.plot.length > 0">
+      Plot must be greater than 30 characters
+    </small>
     director:
     <input type="text" v-model="newMovieParams.director" />
     english:
@@ -45,3 +48,9 @@ export default {
     <button v-on:click="newMovie()">Update Movie</button>
   </div>
 </template>
+
+<style>
+.danger {
+  color: rgb(252, 0, 0);
+}
+</style>
