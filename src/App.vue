@@ -19,8 +19,6 @@ export default {
   <div id="nav">
     <router-link to="/">Home</router-link>
     |
-    <router-link to="/about">About</router-link>
-    |
     <router-link v-if="!isLoggedIn" to="/signup">Signup</router-link>
     |
     <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
@@ -40,7 +38,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffb700;
 }
 
 #nav {
@@ -49,10 +47,25 @@ export default {
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #fcfcfc;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #ffffff;
+}
+
+#wrapper {
+  width: auto;
+  height: auto;
+  background-color: rgb(250, 0, 0);
+  margin: 0 auto;
+  margin-top: auto;
+  border-radius: auto;
+}
+html,
+body {
+  margin: auto;
+  padding: auto;
+  background-color: rgb(0, 0, 0);
 }
 </style>
