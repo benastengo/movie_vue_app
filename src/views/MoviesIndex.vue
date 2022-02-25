@@ -30,19 +30,20 @@ export default {
 </script>
 
 <template>
-  <div class="Movies-index">
-    <p>
-      Search By Title:
-      <input type="text" v-model="titleFilter" list="titles" />
-    </p>
-    <datalist id="titles">
-      <option v-for="movie in movies" v-bind:key="movie.id">
-        {{ movie.title }}
-      </option>
-    </datalist>
-    <div v-for="movie in filteredMovies" v-bind:key="movie.id">
-      <h1>{{ movie.title }}</h1>
-      <router-link v-bind:to="`/movies/${movie.id}`">More details</router-link>
+  <div class="container auto">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div v-for="movie in movies" v-bind:key="movie.id" class="card bg-dark text-white mt-3 mb-3">
+            <img v-bind:src="movie.images[0].url" class="card-img" alt="..." />
+            <div class="card-img-overlay">
+              <h5 class="card-title">{{ movie.title }}</h5>
+              <p class="card-text">{{ movie.plot }}</p>
+              <router-link v-bind:to="`/movies/${movie.id}`" class="btn btn-primary">Movie Info</router-link>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

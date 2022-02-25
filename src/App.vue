@@ -16,56 +16,40 @@ export default {
 </script>
 
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
-    |
-    <router-link v-if="!isLoggedIn" to="/signup">Signup</router-link>
-    |
-    <router-link v-if="!isLoggedIn" to="/login">Login</router-link>
-    |
-    <router-link v-if="!!isLoggedIn" to="/logout">Logout</router-link>
-    |
-    <router-link v-if="!!isLoggedIn" to="/movies">Movies</router-link>
-    |
-    <router-link v-if="!!isLoggedIn" to="/movies/new">New Movie</router-link>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" to="/">Bens Movie List</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link v-if="!!isLoggedIn" class="nav-link" to="/movies">Movies</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link v-if="!!isLoggedIn" class="nav-link" to="/movies/new">Add Movies</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link v-if="!isLoggedIn" class="nav-link" to="/signup">Signup</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link v-if="!isLoggedIn" class="nav-link" to="/login">Login</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link v-if="!!isLoggedIn" class="nav-link" to="/logout">Logout</router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <router-view />
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #ffb700;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #fcfcfc;
-}
-
-#nav a.router-link-exact-active {
-  color: #ffffff;
-}
-
-#wrapper {
-  width: auto;
-  height: auto;
-  background-color: rgb(250, 0, 0);
-  margin: 0 auto;
-  margin-top: auto;
-  border-radius: auto;
-}
-html,
-body {
-  margin: auto;
-  padding: auto;
-  background-color: rgb(0, 0, 0);
-}
-</style>
